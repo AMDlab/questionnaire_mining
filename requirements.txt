@@ -1,0 +1,7 @@
+nose
+sphinx
+mojimoji
+gensim
+scikit-learn
+mecab-python3
+sklearn
