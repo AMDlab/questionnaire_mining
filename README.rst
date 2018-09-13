@@ -9,5 +9,5 @@ To Execute
 ----------
     0. Put your text file into .resource/text_data to analyse it.
     1. Type `pip install -r requirements.txt` to get Libraries.
-    2. execute main method with the command `python `
+    2. execute main method with the command `python main.py`
 
