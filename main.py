@@ -1,13 +1,13 @@
 ####################
 # import files
 ####################
-from gensim.models.keyedvectors import KeyedVectors
-from gensim.models import word2vec
 from collections import defaultdict
 from sklearn.cluster import KMeans
+from lib.gensim.models.keyedvectors import KeyedVectors
+from lib.gensim.models import word2vec
 
 # created module
-import lib.questionnaire_mining as qm
+import lib.mining as qm
 
 ####################
 # const
@@ -19,12 +19,14 @@ DIR_PATH = './resource/text_data/*'
 LEARNED_MODEL_PATH = './resource/model/word2vec.gensim.model'
 # madel data path 
 MODEL_PATH = './tmp/word2vec.gensim.model'
+# Path for result file
+OUTPUT_PATH = './result/result'
 
 # クラスター数
 CLUSTER_NUM = 10            
 # 解析前の文書から除外しておく言語(半角で入力)
 DEFAULT_EXCEPT_KEYWORD = ['宇南山', '遠藤','剣太郎', 'ﾏﾂｳﾗ', 'A -', 'B -','A-', 'B-', '--']
-# 解析前の文書から除外しておく正規表現(半角で入力)
+# 解析前の文書から除外したいフレーズの正規表現(半角で入力)
 DEFAULT_EXCEPT_REG = '\(.+@\d\d:\d\d:\d\d?\)' 
 # 解析結果から除外させる単語
 EXCEPT_KEYWORDS = []
@@ -72,6 +74,13 @@ cluster_to_words = defaultdict(list)
 for cluster_id, word in zip(cluster_labels, vocab):
     cluster_to_words[cluster_id].append(word)
 
-for words in cluster_to_words.values():
-    print(words)
-print(mp.except_keywords)
+lines = []
+for s_i, sen in enumerate(sentences):
+    line = qm.line.Line(''.join(sen), CLUSTER_NUM)
+    for c_i, cluster in enumerate(cluster_to_words.values()):
+        for word in sen:
+            if word in cluster:
+                line.set_word(c_i, word)
+    lines.append(line)
+
+qm.util.lines_to_txt(cluster_to_words.values(), lines, OUTPUT_PATH)
