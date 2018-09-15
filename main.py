@@ -5,9 +5,9 @@ from collections import defaultdict
 from sklearn.cluster import KMeans
 from lib.gensim.models.keyedvectors import KeyedVectors
 from lib.gensim.models import word2vec
+import src.mining as qm
 
 # created module
-import lib.mining as qm
 
 ####################
 # const
