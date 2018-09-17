@@ -13,7 +13,7 @@ class Morph(object):
             '-Ochasen -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/')
         self.wakati = MeCab.Tagger(
             '-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/')
-        self.default_except_keyword = default_except_keyword
+        self.default_except_keyword = [mojimoji.han_to_zen(keyword) for keyword in default_except_keyword]
         self.default_except_reg = default_except_reg
         self.except_keywords = except_keywords
         self.except_main_features = except_main_features
@@ -90,7 +90,7 @@ class Morph(object):
     def __extract(self):
         for _li, line in enumerate(self.lines):
             if line:
-                processed = re.sub('(' + '|'.join(self.default_except_keyword) + ')|', '', mojimoji.zen_to_han(line.strip()))
+                processed = re.sub('(' + '|'.join(self.default_except_keyword) + ')|', '', mojimoji.han_to_zen(line.strip()))
                 processed = re.sub(self.default_except_reg, '', processed)
                 chunks = self.get_chunks(processed.strip())
                 for _ci, chunk in enumerate(chunks):
