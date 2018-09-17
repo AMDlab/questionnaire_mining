@@ -110,7 +110,5 @@ class Morph(object):
                                     self.except_keywords.append(surface)
                         if not surface in self.keywords:
                             self.keywords.append(surface)
-                        # if surface == 'めちゃめちゃ':
-                        #     print(chunk)
                         yield {'surface': surface, 'yomi': yomi, 'origin': origin.lower(), 'feature': feature}
                 yield {'surface': '\n', 'yomi': None, 'origin': None, 'feature': None}
