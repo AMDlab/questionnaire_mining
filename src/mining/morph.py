@@ -94,7 +94,6 @@ class Morph(object):
     def __extract(self):
         for _li, line in enumerate(self.lines):
             if line:
-                print('(' + '|'.join(self.default_except_keyword) + ')')
                 processed = re.sub('(' + '|'.join(self.default_except_keyword) + ')', '', mojimoji.zen_to_han(mojimoji.han_to_zen(line.strip()), kana=False))
                 processed = re.sub(self.default_except_reg, '', processed)
                 chunks = self.get_chunks(processed.strip())
