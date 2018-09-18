@@ -4,7 +4,18 @@ QUESTIONNAR MINING PROJECT Repository
 This is the repository for text mining.
 We can analyse long sentence and divide lines into cluster
 
-
+Requirement
+----------
+    - python3
+    - Mecab
+        install(Windows):
+            1. Download exe file
+                https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7WElGUGt6ejlpVX     
+    - mojimoji(windows)
+        install:
+            1. Download data
+                https://github.com/studio-ousia/mojimoji
+            2. type `pip install -r requirements.txt` and `python setup.py install` 
 To Execute
 ----------
     0. Put your text file into .resource/text_data to analyse it.
