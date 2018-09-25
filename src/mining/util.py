@@ -37,3 +37,21 @@ def lines_to_txt(clusters, lines, file_path):
             f.write('\n')
         f.write('\n')
     f.close()
+
+def lines_to_csv(clusters, lines, file_path):
+    f = open(file_path + '_cluster.csv', 'w')
+    fv = open(file_path + '_cluster_vector.csv', 'w')
+    for c_i, words in enumerate(clusters):
+        f.write('cluster_' + str(c_i) + ',' + ','.join(words))
+        f.write('\n')
+    f.close()
+    f = open(file_path + '.csv', 'w')
+    f.write('cluster name,number of terms,words\n')
+    for line in lines:
+        f.write(line.line)
+        f.write('\n')
+        for l_i, counter in enumerate(line.counters):
+            f.write('cluster_' + str(l_i) + ',' + str(counter) + ',' + ','.join(line.words[l_i]))
+            f.write('\n')
+        f.write('\n')
+    f.close()

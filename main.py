@@ -6,36 +6,27 @@ from sklearn.cluster import KMeans
 from lib.gensim.models.keyedvectors import KeyedVectors
 from lib.gensim.models import word2vec
 import src.mining as qm
+import yaml
 
 # created module
 
 ####################
 # const
 ####################
+yf = open("setting.yml", "r+")
+data = yaml.load(yf)
 
-# directory which has target data
-DIR_PATH = './resource/text_data/*'  
-# learned model data 
-LEARNED_MODEL_PATH = './resource/model/word2vec.gensim.model'
-# madel data path 
-MODEL_PATH = './tmp/word2vec.gensim.model'
-# Path for result file
-OUTPUT_PATH = './result/result'
-
-# クラスター数
-CLUSTER_NUM = 10            
-# 解析前の文書から除外しておく言語(半角で入力)
-DEFAULT_EXCEPT_KEYWORD = ['宇南山', '遠藤','剣太郎', 'ﾏﾂｳﾗ', 'A -', 'B -','A-', 'B-', '--', '@00', '@01', ':', '####', '****', ':00', ':01', ':02', ':03', ':04', ':05', ':06', ':07', ':08', ':09', ':10', ':11', ':12', ':13', ':14', ':15', ':16', ':17', ':18', ':19', ':20', ':21', ':22', ':23', ':24', ':25', ':26', ':27', ':28', ':29', ':30', ':31', ':32', ':33', ':34', ':35', ':36', ':37', ':38', ':39', ':40', ':41', ':42', ':43', ':44', ':45', ':46', ':47', ':48', ':49', ':50', ':51', ':52', ':53', ':54', ':55', ':56', ':57', ':58', ':59', 'C -', 'C-', 'D -', 'D-', 'ｲｲﾂﾞｶ', 'ｷｳﾁ', 'ﾅｶﾞｻﾜ', 'ﾐﾌﾈ', 'ﾔﾏｶﾈ', '(離席)', '(雑談)', 'ﾐﾔﾅｶﾞ', '(了)', '(音質不良にて起こし不可)', 'ﾀﾆ', '(無音)', '原田']
-# 解析前の文書から除外したいフレーズの正規表現(半角で入力)
-DEFAULT_EXCEPT_REG = '\(.+@\d\d:\d\d:\d\d?\)' 
-# 解析結果から除外させる単語
-EXCEPT_KEYWORDS = []
-# 除外する品詞1リスト
-EXCEPT_MAIN_FEATURES = ['記号', '助詞', '助動詞', '感動詞', '接頭詞', '副詞', '連体詞', '接続詞']  
-# 除外する品詞2リスト
-EXCEPT_SUB_FEATURES = ['代名詞', '接尾','副詞可能', '自立', '非自立', '形容動詞語幹'] 
-# 学習済みモデルデータに対するテストデータのバイアス
-BIAS = 10
+DIR_PATH = data['dir_path']
+LEARNED_MODEL_PATH = data['learned_model_path']
+MODEL_PATH = data['model_path']
+OUTPUT_PATH = data['output_path']
+CLUSTER_NUM = data['cluster_num']
+DEFAULT_EXCEPT_KEYWORD = data['default_except_keyword']
+DEFAULT_EXCEPT_REG = data['default_except_reg']
+EXCEPT_KEYWORDS = data['except_keywords']
+EXCEPT_MAIN_FEATURES = data['except_main_features']
+EXCEPT_SUB_FEATURES = data['except_sub_features']
+BIAS = data['bias']
 
 ####################
 # main 
@@ -71,8 +62,10 @@ kmeans_model.fit(vectors)
 
 cluster_labels = kmeans_model.labels_
 cluster_to_words = defaultdict(list)
-for cluster_id, word in zip(cluster_labels, vocab):
+cluster_to_vectors = defaultdict(list)
+for cluster_id, word, vector in zip(cluster_labels, vocab, vectors):
     cluster_to_words[cluster_id].append(word)
+    cluster_to_vectors[cluster_id].append(vector)
 
 lines = []
 for s_i, sen in enumerate(sentences):
@@ -80,7 +73,8 @@ for s_i, sen in enumerate(sentences):
     for c_i, cluster in enumerate(cluster_to_words.values()):
         for word in sen:
             if word in cluster:
-                line.set_word(c_i, word)
+                line.set_word(c_i, word, cluster_to_vectors.values()[c_i][])
     lines.append(line)
 
 qm.util.lines_to_txt(cluster_to_words.values(), lines, OUTPUT_PATH)
+qm.util.lines_to_csv(cluster_to_words.values(), lines, OUTPUT_PATH)
