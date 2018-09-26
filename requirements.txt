@@ -5,3 +5,4 @@ scikit-learn
 mecab-python3
 sklearn
 pyyaml
+numpy

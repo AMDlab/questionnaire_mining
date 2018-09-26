@@ -70,11 +70,11 @@ for cluster_id, word, vector in zip(cluster_labels, vocab, vectors):
 lines = []
 for s_i, sen in enumerate(sentences):
     line = qm.line.Line(''.join(sen), CLUSTER_NUM)
-    for c_i, cluster in enumerate(cluster_to_words.values()):
-        for word in sen:
-            if word in cluster:
-                line.set_word(c_i, word, cluster_to_vectors.values()[c_i][])
+    for cluster_key in cluster_to_words.keys():
+        for w_i, word in enumerate(cluster_to_words[cluster_key]):
+            if word in sen:
+                line.set_word(cluster_key, word, cluster_to_vectors[cluster_key][w_i])
     lines.append(line)
 
-qm.util.lines_to_txt(cluster_to_words.values(), lines, OUTPUT_PATH)
-qm.util.lines_to_csv(cluster_to_words.values(), lines, OUTPUT_PATH)
+qm.util.lines_to_txt(cluster_to_words, cluster_to_vectors, lines, OUTPUT_PATH)
+qm.util.lines_to_csv(cluster_to_words, cluster_to_vectors, lines, OUTPUT_PATH)
