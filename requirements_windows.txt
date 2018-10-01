@@ -1,0 +1,7 @@
+nose
+sphinx
+mojimoji
+scikit-learn
+mecab-python-windows
+sklearn
+pyyaml
