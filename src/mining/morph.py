@@ -30,8 +30,7 @@ class Morph(object):
         return self
 
     def open_file(self, file_path):
-        # f = open(file_path, 'r', 'utf-8', 'ignore')
-        f = open(file_path)
+        f = open(file_path, 'r', encoding="utf-8_sig")
         self.set_sentence(f.read())
         f.close
         return self
@@ -58,7 +57,7 @@ class Morph(object):
         return ' '.join(self.get_surface_as_line())
 
     def write_extracted_wakati(self, file_path):
-        f = open(file_path, 'w')
+        f = open(file_path, 'w', encoding="utf-8_sig")
         f.write(self.get_extracted_wakati())
         f.close()
         return self
