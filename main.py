@@ -76,5 +76,6 @@ if __name__ == "__main__":
                     line.set_word(cluster_key, word, cluster_to_vectors[cluster_key][w_i])
         lines.append(line)
 
+    qm.util.word_vec_to_csv(OUTPUT_PATH, vocab, vectors)
     qm.util.lines_to_txt(cluster_to_words, cluster_to_vectors, lines, OUTPUT_PATH)
     qm.util.lines_to_csv(cluster_to_words, cluster_to_vectors, lines, OUTPUT_PATH)
