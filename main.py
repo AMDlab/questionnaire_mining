@@ -13,7 +13,7 @@ import yaml
 ####################
 # const
 ####################
-yf = open("setting.yml", "r+")
+yf = open("setting.yml", "r+", encoding="utf-8_sig")
 data = yaml.load(yf)
 
 DIR_PATH = data['dir_path']
