@@ -48,15 +48,25 @@ def lines_to_txt(clusters, clusters_vector, lines, file_path):
     f.close()
 
 def lines_to_csv(clusters, clusters_vector, lines, file_path):
-    f = open(file_path + '_cluster.csv', 'w')
-    fv = open(file_path + '_cluster_vector.csv', 'w')
+    fw = open(file_path + '_cluster_vector.csv', 'w')
     keys = list(clusters.keys())
     keys.sort()
+
+    fw.write('cluster name, vector\n')
     for key in keys:
         words = clusters[key]
-        f.write('cluster_' + str(key) + ',' + ','.join(words))
-        f.write('\n')
-    f.close()
+        fw.write('cluster_' + str(key) + '_avarage_vector' + ',' + ','.join([str(val) for val in avarage_arr(clusters_vector[key])]))
+        fw.write('\n')
+    fw.close()
+    fv = open(file_path + '_cluster.csv', 'w')
+
+    fv.write('cluster name, words\n')
+    for key in keys:
+        words = clusters[key]
+        fv.write('cluster_' + str(key) + ',' + ','.join(words))
+        fv.write('\n')
+    fv.close()
+
     f = open(file_path + '.csv', 'w')
     f.write('cluster name,number of terms,words\n')
     for line in lines:
@@ -67,6 +77,14 @@ def lines_to_csv(clusters, clusters_vector, lines, file_path):
             f.write('\n')
         f.write('\n')
     f.close()
+
+    frv = open(file_path + '_vector.csv', 'w')
+    frv.write('text,vector\n')
+    for line in lines:
+        frv.write(line.line + ',' + ','.join([str(val) for val in avarage_arr(line.non_cat_vectors)]))
+        frv.write('\n')
+    f.close()
+
 
 def avarage_arr(arr):
     nparr = to_numpy(arr)

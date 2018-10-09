@@ -10,9 +10,9 @@ class Morph(object):
 
     def __init__(self, default_except_keyword = [], default_except_reg = '', except_keywords=[], except_main_features=[], except_sub_features=[]):
         self.chasen = MeCab.Tagger(
-            '-Ochasen -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/')
+            '-Ochasen -d ./resource/dictionary/')
         self.wakati = MeCab.Tagger(
-            '-Owakati -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/')
+            '-Owakati -d ./resource/dictionary/')
         self.default_except_keyword = []
         for keyword in default_except_keyword:
             key = mojimoji.zen_to_han(mojimoji.han_to_zen(keyword), kana=False)
