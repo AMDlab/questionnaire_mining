@@ -8,7 +8,7 @@ QUESTIONNAR MINING PROJECT Repository
     - Mecab
         インスートル(Windows):
             1. exeファイルを以下のリンクからダウンロードし、実行してください。
-                https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7WElGUGt6ejlpVX     
+                https://github.com/ikegami-yukino/mecab/releases/tag/v0.996   
 
 To Execute
 ----------
@@ -52,7 +52,7 @@ Requirement
     - Mecab
         install(Windows):
             1. Download exe file
-                https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7WElGUGt6ejlpVX     
+                https://github.com/ikegami-yukino/mecab/releases/tag/v0.996     
 
 To Execute
 ----------
