@@ -7,6 +7,8 @@ model_path: './tmp/word2vec.gensim.model'
 # Path for result file
 output_path: './result/result'
 
+
+
 # クラスター数
 cluster_num: 10  
 
