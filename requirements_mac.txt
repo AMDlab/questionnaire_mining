@@ -4,5 +4,6 @@ mojimoji
 scikit-learn
 mecab-python3
 sklearn
+gensim
 pyyaml
 numpy
