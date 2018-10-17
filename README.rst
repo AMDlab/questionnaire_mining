@@ -14,8 +14,12 @@ To Execute
 ----------
     0. resource/text_data　ファイルに分析したいデータを配置してください。
     1. 
-        a. Windowsの場合はコマンドプロンプト上のこのリポジトリのルートで `pip install -r requirements_windows.txt`を入力してください。
-        b. Macの場合はターミナルこのリポジトリのルートで `pip install -r requirements_mac.txt` を入力してください。
+        a. Windowsの場合:
+            1. 以下のソースをダウンロードし、pip コマンドでインストールしてください。
+                https://github.com/studio-ousia/mojimoji
+            2. コマンドプロンプト上のこのリポジトリのルートで `pip install -r requirements_windows.txt`を入力してください。
+        b. Macの場合:
+            ターミナルこのリポジトリのルートで `pip install -r requirements_mac.txt` を入力してください。
     2. `python main.py` を入力して、プログラムを入力してください。
     3. `result`　ディレクトリの配下に分析の結果が出力されます。 
 
@@ -58,8 +62,12 @@ To Execute
 ----------
     0. Put your text file into .resource/text_data to analyse it.
     1. Open Terminal (Command Prompt), move to this repository's root and...
-        a. If your PC is Windows Type `pip install -r requirements_windows.txt` to get Libraries.
-        b. If your PC is Mac  Type `pip install -r requirements_mac.txt` to get Libraries.
+        a. If your PC is Windows:
+            1. Download data and install it with pip command
+                https://github.com/studio-ousia/mojimoji
+            2. Type `pip install -r requirements_windows.txt` to get Libraries.
+        b. If your PC is Mac:
+            Type `pip install -r requirements_mac.txt` to get Libraries.
     2. execute main method with the command `python main.py`
     3. After 2, the result is written on files in `result` 
 
