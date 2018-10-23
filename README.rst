@@ -2,9 +2,18 @@ QUESTIONNAR MINING PROJECT Repository
 ========================
 テキストマイニングでクラスターを作成するプログラムです。
 
+Install(git & git lfs)
+----------
+
+```
+git clone git@github.com:AMDlab/questionnaire_mining.git
+cd questionnaire_mining
+git lfs pull
+```
+
 実行に必要な環境
 ----------
-    - python3
+    - python3.5.0
     - Mecab
         インスートル(Windows):
             1. exeファイルを以下のリンクからダウンロードし、実行してください。
