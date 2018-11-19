@@ -5,11 +5,11 @@ QUESTIONNAR MINING PROJECT Repository
 Install(git & git lfs)
 ----------
 
-```
-git clone git@github.com:AMDlab/questionnaire_mining.git
-cd questionnaire_mining
-git lfs pull
-```
+
+- git clone git@github.com:AMDlab/questionnaire_mining.git
+- cd questionnaire_mining
+- git lfs pull
+
 
 実行に必要な環境
 ----------
