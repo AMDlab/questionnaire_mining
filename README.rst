@@ -2,9 +2,9 @@ QUESTIONNAR MINING PROJECT Repository
 ========================
 テキストマイニングでクラスターを作成するプログラムです。
 
-Install(git & git lfs)
+インストール(git & git lfs)
 ----------
-
+gitおよびgit lfsをインストールの後、以下のコマンドを実行してください。
 
 - git clone git@github.com:AMDlab/questionnaire_mining.git
 - cd questionnaire_mining
@@ -19,7 +19,7 @@ Install(git & git lfs)
             1. exeファイルを以下のリンクからダウンロードし、実行してください。
                 https://github.com/ikegami-yukino/mecab/releases/tag/v0.996   
 
-To Execute
+実行方法
 ----------
     0. resource/text_data　ファイルに分析したいデータを配置してください。
     1. 
@@ -33,7 +33,7 @@ To Execute
     3. `result`　ディレクトリの配下に分析の結果が出力されます。 
 
 
-Settings
+背亭
 ----------
 setting.ymlの内容を変更することで、分析のための設定を変更することができます。
 
@@ -58,6 +58,14 @@ setting.ymlの内容を変更することで、分析のための設定を変更
 
 This is the repository for text mining.
 We can analyse long sentence and divide lines into cluster
+
+Install(git & git lfs)
+----------
+you need git and git lfs to install. Install them before install this program.  
+
+- git clone git@github.com:AMDlab/questionnaire_mining.git
+- cd questionnaire_mining
+- git lfs pull
 
 Requirement
 ----------
